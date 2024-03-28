@@ -1,4 +1,8 @@
- initializePersonalizationEngine = function(){
+onInit = function() {
+this.initializePersonalizationEngine();
+}
+
+initializePersonalizationEngine = function(){
 
 	var aColumns = this.getView().oTable.getColumns();
 	this.aMetadata = [];
