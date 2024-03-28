@@ -1,0 +1,3 @@
+this.oTable.bindColumns('tableMeta>/columns', $.proxy(function(sId, oContext) {
+//Data
+}
