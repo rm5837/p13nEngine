@@ -1,0 +1,30 @@
+ initializePersonalizationEngine = function(){
+
+	var aColumns = this.getView().oTable.getColumns();
+	this.aMetadata = [];
+						aColumns.forEach(function (oColumn) {
+							var sKey = this.getView().getLocalId(oColumn.getId())
+							this.aMetadata.push({
+								key: sKey,
+								label: oColumn.getLabel().getText(),
+								//path: sKey,
+							});
+						}.bind(this));
+
+	this.oHelper = new sap.m.p13n.MetadataHelper(this.aMetadata);
+		this.oEngine=new sap.m.p13n.Engine();
+		let oTable=this.getView().oTable;
+		this.oEngine.register(oTable,{
+			helper: this.oHelper,
+			controller: {
+				Columns: new sap.m.p13n.SelectionController({
+					control: oTable,
+					targetAggregation: "columns",
+					enableReorder: false,
+				})
+			}
+		});
+	
+	this.oEngine.attachStateChange(function (oEvt) {
+		}.bind(this));
+}
